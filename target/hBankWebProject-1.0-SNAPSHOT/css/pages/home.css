@@ -1,0 +1,22 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 8, 2022, 8:53:29 AM
+    Author     : pato
+*/
+
+/* BANNER */
+
+#banner {
+  height: 65vh;
+  background-image: url("/img/home.jpg");
+  background-position: top;
+  background-size: cover;
+}
+  h1 {
+      font-family: 'Rubik', sans-serif ;
+  }
+ 

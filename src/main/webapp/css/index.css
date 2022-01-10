@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 7, 2022, 7:36:40 PM
+    Author     : pato
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300&display=swap');
+
+
+@import 'normalize.css';
+@import 'global.css';
+
+/* PARTIALS */
+@import './partials/header.css';
+
+/* PAGES */
+@import './pages/home.css';
+@import './pages/login.css';
+
+
+
