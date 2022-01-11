@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.User;
+import java.util.List;
+import java.util.ArrayList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -53,11 +55,13 @@ public class UserDAO {
         connection = cnx.getConnection("hbanking", "root", "Papeete#");
     }
     
+        
     //método para poder traer un usuario
     /* Al crear una instancia de userDAO automaticamente guardo en connection 
     * una conexión a la base de datos. Entonces al usar el siguiente método 
     * puedo consultar la conexión automáticamente
     */     
+    
     
     public User getUserByUserName(String username) throws SQLException {
         PreparedStatement ps;
@@ -88,21 +92,33 @@ public class UserDAO {
         }
     
     public boolean login (String username, String password) throws SQLException {
-        
         PreparedStatement ps;
         ResultSet rs;
         
         ps = connection.prepareStatement("SELECT username, password FROM users WHERE username = ? AND password = ?"); //creo statement para la conexion
         ps.setString(1, username);
         ps.setString(2, password);
-        
         rs = ps.executeQuery();
         
-//        rs.close();
-//        ps.close();
-//        connection.close();
         
-        return rs.next();
+        if (rs.next()){
+            rs.close();
+            ps.close();
+            connection.close();
+            return true;
+        }
+        rs.close();
+        ps.close();
+        connection.close();
+        return false;
+        
+        
+// Lo dejo comentao para recordar que no funciona!!        
+//        connection.close();  
+//        ps.close();
+//       rs.close();
+//       
+//        return rs.next();
     }
     
     // método para crear un nueva nueva cuenta de usuario:
@@ -132,7 +148,28 @@ public class UserDAO {
         return false;   
         } 
       return false;
-    }   
+    }
+   
+    public List<User> getUsers(int limit) throws SQLException {
+        PreparedStatement ps;
+        ResultSet rs;
+        List<User> usersDB = new ArrayList<>();
+        
+        ps = connection.prepareStatement("SELECT * FROM users LIMIT ?");
+            ps.setInt(1, limit);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                usersDB.add(new User(rs.getString("username"), rs.getString("password")));
+            }
+           
+            rs.close();
+            ps.close();
+            connection.close();
+    
+            return usersDB;
+    }
+    
 }
     
       

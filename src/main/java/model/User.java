@@ -5,6 +5,10 @@
  */
 package model;
 
+import database.AccountDAO;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author pato
@@ -19,6 +23,7 @@ public class User {
     private String city;
     private String country;
     private String avatar;
+    private List<Account> userAccounts;
     
     //Método constructor. Para registrar nuevo usuario
     public User (String username, String password, String name, String lastName, String gender, String email, String city, String country, String avatar) {
@@ -31,6 +36,13 @@ public class User {
         this.city = city;
         this.country = country;
         this.avatar = avatar;
+        
+        AccountDAO accounts = new AccountDAO();
+        try {
+            this.userAccounts = accounts.getAccounts(1,10);
+        } catch (SQLException err) {
+           
+        }
     
     }
     
@@ -41,6 +53,9 @@ public class User {
         this.password = password;
     }
     
+    
+    
+   
     // Getters & Setters
 
     public String getUsername() {

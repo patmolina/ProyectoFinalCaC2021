@@ -1,5 +1,7 @@
-model/User.class
+database/AccountDAO.class
 controller/ViewsController.class
 controller/UserController.class
+model/User.class
 config/DBConnection.class
+model/Account.class
 database/UserDAO.class

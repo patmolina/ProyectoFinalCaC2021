@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,7 +56,7 @@ public class UserController extends HttpServlet {
                 boolean loggedIn = userDB.login(userName, passw); // consulta a la base de datos
                 
                 if (loggedIn) {
-                    session.setAttribute("isLogin", loggedIn); // el valor del booleano isLogin lo guardo como loggedIn
+                    session.setAttribute("isLogin", loggedIn); 
                     response.sendRedirect("/views/profile.jsp");
                 } else {
                     response.sendRedirect("/views/login.jsp");
@@ -102,9 +101,7 @@ public class UserController extends HttpServlet {
                     
                     break;
                 
-            } 
-             
-                    
+            }                   
         } catch (SQLException err) {
             err.printStackTrace();          
         }
