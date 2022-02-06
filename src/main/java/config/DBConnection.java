@@ -31,10 +31,10 @@ public class DBConnection {
             Class.forName(driver); //carga el driver de jdbc en tiempo de ejecución para que Tomcat (server) pueda usar la conexión a jdbc en
             cnx = DriverManager.getConnection(host + database, userMysql, pwdMysql); //usa el diver
           
-        } catch (ClassNotFoundException | SQLException err) { // si en tiempo de ejecuci[on no encuentra la clase, devuelve la excepci[on
+        } catch (ClassNotFoundException | SQLException err) { // si en tiempo de ejecución no encuentra la clase, devuelve la excepción
             err.printStackTrace();
         }
         return cnx;
-    }
-    
+    }  
 }
+

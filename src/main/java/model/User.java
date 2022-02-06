@@ -8,6 +8,7 @@ package model;
 import database.AccountDAO;
 import java.sql.SQLException;
 import java.util.List;
+import database.UserDAO;
 
 /**
  *
@@ -22,11 +23,12 @@ public class User {
     private String email;
     private String city;
     private String country;
-    private String avatar;
-    private List<Account> userAccounts;
+    //private List<Account> userAccounts;
     
     //Método constructor. Para registrar nuevo usuario
-    public User (String username, String password, String name, String lastName, String gender, String email, String city, String country, String avatar) {
+
+    public User (String username, String password, String name, String lastName, String gender, String email, String city, String country) {
+
         this.username = username;
         this.password = password;
         this.name = name;
@@ -35,16 +37,22 @@ public class User {
         this.email = email;
         this.city = city;
         this.country = country;
-        this.avatar = avatar;
         
-        AccountDAO accounts = new AccountDAO();
-        try {
-            this.userAccounts = accounts.getAccounts(1,10);
-        } catch (SQLException err) {
-           
-        }
+//        AccountDAO accounts = new AccountDAO();
+//        try {
+//            this.userAccounts = accounts.getAccounts(1,10);
+//        } catch (SQLException err) {
+//           
+//        }
+    }    
     
-    }
+    //Para actualizar un usuario
+//    public User (String password, String email, String city, String country) {
+//        this.password = password;
+//        this.email = email;
+//        this.city = city;
+//        this.country = country;
+//    }    
     
     //Sobrecarga método constructor con otra alternativa para crear usuario. Lo uso para validar si las credenciales están correctas
     
@@ -52,9 +60,8 @@ public class User {
         this.username = username;
         this.password = password;
     }
-    
-    
-    
+
+       
    
     // Getters & Setters
 
@@ -114,14 +121,6 @@ public class User {
         this.gender = gender;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
     public String getCountry() {
         return country;
     }
@@ -129,9 +128,20 @@ public class User {
     public void setCountry(String country) {
         this.country = country;
     }
+
+//    public int getUserID() {
+//        return userID;
+//    }
+//
+//    public void setUserID(int userID) {
+//        this.userID = userID;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "User{" + "userID=" + userID + ", username=" + username + ", password=" + password + ", name=" + name + ", lastName=" + lastName + ", gender=" + gender + ", email=" + email + ", city=" + city + ", country=" + country + '}';
+//    }
     
-    
-    
-    
+   
     
 }

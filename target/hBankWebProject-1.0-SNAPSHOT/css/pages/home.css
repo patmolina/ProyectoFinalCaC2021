@@ -11,10 +11,11 @@ and open the template in the editor.
 /* BANNER */
 
 #banner {
-  height: 65vh;
+  height: 60vh;
   background-image: url("/img/home.jpg");
   background-position: top;
   background-size: cover;
+  margin-bottom: 10px;
 }
   h1 {
       font-family: 'Rubik', sans-serif ;

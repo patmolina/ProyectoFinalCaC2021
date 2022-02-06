@@ -19,7 +19,5 @@ and open the template in the editor.
 
 /* PAGES */
 @import './pages/home.css';
+@import './pages/profile.css';
 @import './pages/login.css';
-
-
-

@@ -45,6 +45,9 @@ public class ViewsController extends HttpServlet {
                 case "/register":         
                     response.sendRedirect("/views/register.jsp");
                     break;
+                case "/updateUser":
+                    response.sendRedirect("views/updateUser.jsp");
+                    break;
                 default:
                     response.sendRedirect("/view/404.html");
                     break;
