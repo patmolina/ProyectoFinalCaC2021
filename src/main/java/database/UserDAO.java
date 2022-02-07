@@ -61,6 +61,7 @@ public class UserDAO {
             rs = ps.executeQuery(); //consulta la base y asigna resultado a rs
             
             if(rs.next()) { //no hago un while xq necesito 1 solo valor
+                int userID = rs.getInt("id");
                 String userName = rs.getString("username");
                 String password = rs.getString("password"); 
                 String name = rs.getString("name");
@@ -70,38 +71,38 @@ public class UserDAO {
                 String city = rs.getString("city");
                 String country = rs.getString("country");
                 
-                user = new User(userName, password, name, lastname, gender, email, city, country); // uso el constructor que había creado en la clase User
+                user = new User(userID, userName, password, name, lastname, gender, email, city, country); // uso el constructor que había creado en la clase User
             }
                 
             return user;
     }
         
-//    public User getUserbyUserID (int userID) throws SQLException {
-//        PreparedStatement ps;
-//        ResultSet rs; 
-//        User user = null; // Si el usuario no existe al hacer la consulta, devuelve null
-//        
-//            ps = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
-//            ps.setInt(1, userID);
-//            rs = ps.executeQuery(); //consulta la base y asigna resultado a rs
-//            
-//            if(rs.next()) { //no hago un while xq necesito 1 solo valor
-//                userID = rs.getInt("userId");
-//                String userName = rs.getString("username");
-//                String password = rs.getString("password"); 
-//                String name = rs.getString("name");
-//                String lastname = rs.getString("lastname");
-//                String gender = rs.getString("gender");
-//                String email = rs.getString("email");
-//                String city = rs.getString("city");
-//                String country = rs.getString("country");
-//                
-//                user = new User(userName, password, name, lastname, gender, email, city, country); // uso el constructor que había creado en la clase User
-//            }
-//            
-//            return user;
-//            
-//    } 
+    public User getUserbyUserID (int userID) throws SQLException {
+        PreparedStatement ps;
+        ResultSet rs; 
+        User user = null; // Si el usuario no existe al hacer la consulta, devuelve null
+        
+            ps = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
+            ps.setInt(1, userID);
+            rs = ps.executeQuery(); //consulta la base y asigna resultado a rs
+            
+            if(rs.next()) { //no hago un while xq necesito 1 solo valor
+                userID = rs.getInt("id");
+                String userName = rs.getString("username");
+                String password = rs.getString("password"); 
+                String name = rs.getString("name");
+                String lastname = rs.getString("lastname");
+                String gender = rs.getString("gender");
+                String email = rs.getString("email");
+                String city = rs.getString("city");
+                String country = rs.getString("country");
+                
+                user = new User(userID, userName, password, name, lastname, gender, email, city, country); // uso el constructor que había creado en la clase User
+            }
+            
+            return user;
+            
+    } 
     
     public boolean login (String username, String password) throws SQLException {
         PreparedStatement ps;
@@ -124,14 +125,14 @@ public class UserDAO {
         connection.close();
         return false;
         
-        
+    }    
 // Lo dejo comentao para recordar que no funciona!!        
 //        connection.close();  
 //        ps.close();
 //       rs.close();
 //       
 //        return rs.next();
-    }
+    
     
     // método para crear una nueva cuenta de usuario:
     
@@ -162,8 +163,18 @@ public class UserDAO {
       return false;
     }
   
-    
-//    public boolean modifyUser(String username, String password, String email, String city, String country, String repassw) throws SQLException {
+    public boolean deleteUser (int ID) throws SQLException {
+        PreparedStatement ps;
+        ps = connection.prepareStatement ("DELETE FROM users WHERE id = ?");
+        ps.setInt(1, ID);
+        ps.executeUpdate();
+        ps.close();
+        connection.close();
+
+        return true;                    
+    }
+        
+    //    public boolean modifyUser(String username, String password, String email, String city, String country, String repassw) throws SQLException {
 //        PreparedStatement ps;
 //        ResultSet rs;
 //        
@@ -186,15 +197,6 @@ public class UserDAO {
 //      return false;
 //    }
    
-//    public boolean deleteUser (String userName) throws SQLException {
-//        PreparedStatement ps;
-//            ps = connection.prepareStatement ("DELETE FROM users WHERE username = ?");
-//            ps.setString(1, userName);
-//            ps.executeUpdate();
-//            
-//            return true;    
-//    }
-        
 
     
 //    public List<User> getUsers(int limit) throws SQLException {

@@ -43,11 +43,16 @@
             out.println(" " + userL.getName() + " " + userL.getLastName());
         %>
         !</h1>
+        
+        <%   
+            session.setAttribute("ID", userL.getUserID());
+        %>
+        
     </div> 
       
     <div class ="container">
-        <h2>Mis Datos</h2>
-       
+        <h2>Mi Perfil</h2>
+        <br>
         <table class="table table-striped table-hover">
           
           <tbody>
@@ -81,6 +86,11 @@
               <td></td>
             </tr>
             <tr>  
+              <td>User ID</td>
+              <td><%out.println(userL.getUserID());%></td>
+              <td></td>
+            </tr>
+            <tr>  
               <td>Usuario</td>
               <td><%out.println(userL.getUsername());%></td>
               <td></td>
@@ -95,9 +105,8 @@
     </div>            
     <div class="container mx-auto">
         <a class="btn btn-dark" href="/user/updateUser">Modificar datos</a>
-        <a class="btn btn-danger" href="/user/delete">Darse de Baja</a>
+        <a class="btn btn-danger" href="/user/delete">Darse de baja</a>
     </div> 
               
               
 <%@include file="./partials/footer.html" %>
-"

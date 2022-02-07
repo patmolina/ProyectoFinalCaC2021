@@ -15,6 +15,7 @@ import database.UserDAO;
  * @author pato
  */
 public class User {
+    private int userID;
     private String username;
     private String password;
     private String name;
@@ -27,8 +28,9 @@ public class User {
     
     //Método constructor. Para registrar nuevo usuario
 
-    public User (String username, String password, String name, String lastName, String gender, String email, String city, String country) {
+    public User (int userID, String username, String password, String name, String lastName, String gender, String email, String city, String country) {
 
+        this.userID = userID;
         this.username = username;
         this.password = password;
         this.name = name;
@@ -61,9 +63,27 @@ public class User {
         this.password = password;
     }
 
-       
-   
+//    public User (String username, String password, String name, String lastName, String gender, String email, String city, String country) {
+//
+//        this.username = username;
+//        this.password = password;
+//        this.name = name;
+//        this.lastName = lastName;
+//        this.gender = gender;
+//        this.email = email;
+//        this.city = city;
+//        this.country = country;   
+//    }
+        
     // Getters & Setters
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 
     public String getUsername() {
         return username;
@@ -97,6 +117,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -113,14 +141,6 @@ public class User {
         this.city = city;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getCountry() {
         return country;
     }
@@ -129,19 +149,12 @@ public class User {
         this.country = country;
     }
 
-//    public int getUserID() {
-//        return userID;
-//    }
-//
-//    public void setUserID(int userID) {
-//        this.userID = userID;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "User{" + "userID=" + userID + ", username=" + username + ", password=" + password + ", name=" + name + ", lastName=" + lastName + ", gender=" + gender + ", email=" + email + ", city=" + city + ", country=" + country + '}';
-//    }
-    
-   
-    
+    @Override
+    public String toString() {
+        return "User{" + "userID=" + userID + ", username=" + username + ", password=" + password + ", name=" + name + ", lastName=" + lastName + ", gender=" + gender + ", email=" + email + ", city=" + city + ", country=" + country + '}';
+    }
+
+
+
+
 }

@@ -86,28 +86,37 @@ public class UserController extends HttpServlet {
                     
                     if (isCreated) {
                         session.setAttribute("createMessage", isCreated);
-                        response.sendRedirect("/views/userMessage.jsp"); 
+                        response.sendRedirect("/views/userNewMssg.jsp"); 
                          
                     } else {
                         session.setAttribute("createMessage", isCreated);
-                        response.sendRedirect("/views/userMessage.jsp");
+                        response.sendRedirect("/views/userNewMssg.jsp");
                     }
                     break;
                 
+                case "/profile":
+                    response.sendRedirect("/views/profile.jsp");   
+                    break;
+             
                 case "/logout":
                     session.setAttribute("isLogin", false);
                     response.sendRedirect("/");   
                     break;
                 
-//                case "/profile":
-//                    response.sendRedirect("/views/profile.jsp");   
-//                    break;
-//                case "/delete":
-//                    userName = request.getParameter("username");
-//                    userDB.deleteUser(userName);
-//                    
-//                    response.sendRedirect("/views/test.html");
-//                    break;
+                
+                case "/delete":
+                  int userID = Integer.parseInt(session.getAttribute("ID").toString());
+                  boolean isDeleted = userDB.deleteUser(userID);
+                    
+                    if (isDeleted) {
+                        session.setAttribute("deleteMssg", isDeleted);
+                        session.setAttribute("isLogin", false);
+                        response.sendRedirect("/views/userDelMssg.jsp");
+                    } else {
+                        session.setAttribute("deleteMssg", isDeleted);
+                        response.sendRedirect("/views/userDelMssg.jsp");
+                    }
+                    break;
                     
 //                case "/updateUser":
 //                    userName = request.getParameter("username");
