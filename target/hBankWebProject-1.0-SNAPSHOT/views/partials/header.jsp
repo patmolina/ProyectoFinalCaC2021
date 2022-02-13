@@ -39,10 +39,10 @@
                 %>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/account/myaccounts">Mis Cuentas</a>
+                        <a class="nav-link" href="#">Mis Cuentas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/account/transfer">Transferencias</a>
+                        <a class="nav-link" href="#">Transferencias</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Conocenos</a>

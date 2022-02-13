@@ -174,30 +174,29 @@ public class UserDAO {
         return true;                    
     }
         
-    //    public boolean modifyUser(String username, String password, String email, String city, String country, String repassw) throws SQLException {
-//        PreparedStatement ps;
-//        ResultSet rs;
-//        
-//        if (password.equals(repassw)) {
-//        ps = connection.prepareStatement("UPDATE users (password, email, city, country) VALUES(?, ?, ?, ?)");
-//        ps.setString(1, password);
-//        ps.setString(2, email);
-//        ps.setString(3, city);
-//        ps.setString(4, country);
-//        ps.executeUpdate();
-//        
-//        ps = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
-//        ps.setString(1, username);
-//        rs = ps.executeQuery();
-//           if (rs.next()) {
-//               return true;
-//           } 
-//        return false;   
-//        } 
-//      return false;
-//    }
-   
-
+        public boolean updateUser(int userId, String password, String email, String city, String country, String repassw) throws SQLException {
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        if (password.equals(repassw)) {
+        ps = connection.prepareStatement("UPDATE users SET password=?, email=?, city=?, country=?  WHERE id=?");
+        ps.setString(1, password);
+        ps.setString(2, email);
+        ps.setString(3, city);
+        ps.setString(4, country);
+        ps.setInt(5, userId);
+        ps.executeUpdate();
+        
+        ps = connection.prepareStatement("SELECT * FROM users WHERE id=?");
+        ps.setInt(1, userId);
+        rs = ps.executeQuery();
+           if (rs.next()) {
+               return true;
+           } 
+        return false;   
+        } 
+      return false;
+    }
     
 //    public List<User> getUsers(int limit) throws SQLException {
 //        PreparedStatement ps;

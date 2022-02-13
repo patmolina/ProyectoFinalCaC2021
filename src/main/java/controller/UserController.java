@@ -118,28 +118,31 @@ public class UserController extends HttpServlet {
                     }
                     break;
                     
-//                case "/updateUser":
-//                    userName = request.getParameter("username");
-//                    passw = request.getParameter("password");
-//                    email = request.getParameter("email");
-//                    city = request.getParameter("city");
-//                    country = request.getParameter("country");
-//                    repassw = request.getParameter("repassword");
-//                    
-//                    UserDAO userUpd = new UserDAO();
-//                    
-//                    boolean isUpdated = userUpd.modifyUser(userName, passw, email, city, country, repassw);
-//                    
-//                   
-//                    if (isUpdated) {
-//                        session.setAttribute("createMessageCr", isUpdated);
-//                        response.sendRedirect("/views/userMessage.jsp"); 
-//                         
-//                    } else {
-//                        session.setAttribute("createMessageCr", isUpdated);
-//                        response.sendRedirect("/views/userMessage.jsp");
-//                    }
-//                    break;
+                case "/updateUser":
+                    //uName = request.getParameter("username1");
+                    passw = request.getParameter("password");
+                    //name = request.getParameter("name1");
+                    //lastname = request.getParameter("lastname1");
+                    //gender = request.getParameter("gender1");
+                    email = request.getParameter("email");
+                    city = request.getParameter("city");
+                    country = request.getParameter("country");
+                    repassw = request.getParameter("repassword");
+                    int userId = Integer.parseInt(session.getAttribute("ID").toString());
+                  
+                    boolean isUpdated = userDB.updateUser(userId, passw, email, city, country,repassw);
+                   
+                    if (isUpdated) {
+                        User userL = userDB.getUserbyUserID(userId);
+                        session.setAttribute("userLogged", userL);
+                        session.setAttribute("updateMssg", isUpdated);
+                        response.sendRedirect("/views/userUpdMssg.jsp"); 
+                         
+                    } else {
+                        session.setAttribute("updateMssg", isUpdated);
+                        response.sendRedirect("/views/userUpdMssg.jsp");
+                    }
+                    break;
                     
                 default:
                     

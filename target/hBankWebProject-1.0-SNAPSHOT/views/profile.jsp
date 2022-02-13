@@ -19,12 +19,11 @@
             response.setHeader("Cache-Control", "no-cache, no-store, mustrevalidate");
             isLogged = (boolean) session.getAttribute("isLogin");
             if (!isLogged) {
-               response.sendRedirect("/OnlineBankingLogin");
+               response.sendRedirect("/login");
             }
           
             
             User userL = (User) session.getAttribute("userLogged");
-           
             if (userL.getGender().equals("female")) {
  
         %>
@@ -104,7 +103,7 @@
         </table>
     </div>            
     <div class="container mx-auto">
-        <a class="btn btn-dark" href="/user/updateUser">Modificar datos</a>
+        <a class="btn btn-dark" href="/view/updateUser">Modificar datos</a>
         <a class="btn btn-danger" href="/user/delete">Darse de baja</a>
     </div> 
               

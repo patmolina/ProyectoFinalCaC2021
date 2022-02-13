@@ -24,6 +24,7 @@ public class User {
     private String email;
     private String city;
     private String country;
+    private String repassw;
     //private List<Account> userAccounts;
     
     //Método constructor. Para registrar nuevo usuario
@@ -49,12 +50,14 @@ public class User {
     }    
     
     //Para actualizar un usuario
-//    public User (String password, String email, String city, String country) {
-//        this.password = password;
-//        this.email = email;
-//        this.city = city;
-//        this.country = country;
-//    }    
+    public User (int userID, String password, String email, String city, String country, String repassw) {
+        this.userID = userID;
+        this.password = password;
+        this.email = email;
+        this.city = city;
+        this.country = country;
+        this.repassw = repassw;
+    }    
     
     //Sobrecarga método constructor con otra alternativa para crear usuario. Lo uso para validar si las credenciales están correctas
     

@@ -38,7 +38,7 @@ public class ViewsController extends HttpServlet {
             String action = request.getPathInfo();
                     
               switch (action) {
-                  
+                 
                 case "/login":         
                     response.sendRedirect("/views/login.jsp");
                     break;
@@ -46,9 +46,8 @@ public class ViewsController extends HttpServlet {
                     response.sendRedirect("/views/register.jsp");
                     break;
                 case "/updateUser":
-                    response.sendRedirect("views/updateUser.jsp");
+                    response.sendRedirect("/views/updateUser.jsp");
                     break;
-                
                 default:
                     response.sendRedirect("/view/404.html");
                     break;
